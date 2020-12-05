@@ -10,7 +10,7 @@ public class SecretCombination extends Combination {
 			for (int i = 0; i < combination.length; i++) {
 				int randomValue = new Random().nextInt(Color.values().length);
 				Color randomColor = Color.values()[randomValue];
-				combination[i] = new Position(i, randomColor);
+				combination[i] = new Position(randomColor);
 			}
 			this.combination = combination;
 		} while (this.hasDuplicates());

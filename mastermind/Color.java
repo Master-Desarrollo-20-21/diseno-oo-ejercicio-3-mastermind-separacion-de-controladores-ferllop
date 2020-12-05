@@ -8,19 +8,19 @@ enum Color {
 	ORANGE('o'),
 	PURPLE('p');
 	
-	private char initial;
+	private char letter;
 	
 	private Color(char initial) {
-		this.initial = initial;
+		this.letter = initial;
 	}
 	
-	public char getInitial() {
-		return initial;		
+	public char getLetter() {
+		return letter;		
 	}
 	
-	public static Color valueOf(char initial) {
+	public static Color valueOf(char letter) {
         for (Color color : values()) {
-            if (color.initial == initial) {
+            if (color.letter == letter) {
                 return color;
             }
         }

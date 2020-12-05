@@ -5,7 +5,7 @@ public class ProposedCombination extends Combination{
 	public ProposedCombination(char[] proposedCombination) {
 		this.combination = new Position[COMBINATION_LENGTH];
 		for (int i = 0; i < proposedCombination.length; i++) {
-			this.combination[i] = new Position(i, Color.valueOf(proposedCombination[i]));
+			this.combination[i] = new Position(Color.valueOf(proposedCombination[i]));
 		}
 	}
 	

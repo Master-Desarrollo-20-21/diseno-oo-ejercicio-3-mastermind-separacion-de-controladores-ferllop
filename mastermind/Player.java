@@ -13,7 +13,7 @@ public class Player {
 	public void proposeCombination(int validLength) {
 		char[] validColorInitials = new char[Color.values().length];
 		for (int i = 0; i < Color.values().length; i++) {
-			validColorInitials[i] = Color.values()[i].getInitial();
+			validColorInitials[i] = Color.values()[i].getLetter();
 		}
 		ProposedCombination proposedCombination = new ProposedCombination(
 			new ConsoleIO().getValidValue("Propose a combination", validColorInitials, validLength)

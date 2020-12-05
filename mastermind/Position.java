@@ -2,11 +2,9 @@ package mastermind;
 
 public class Position {
 	
-	private int location;
 	private Color color;
 	
-	public Position(int location, Color color) {
-		this.location = location;
+	public Position(Color color) {
 		this.color = color;		
 	}
 	
@@ -14,11 +12,7 @@ public class Position {
 		return this.color == position.color;
 	}
 	
-	public boolean hasSamePosition(Position position) {
-		return this.location == position.location;
-	}
-	
 	public char getInitial() {
-		return color.getInitial();
+		return color.getLetter();
 	}
 }
