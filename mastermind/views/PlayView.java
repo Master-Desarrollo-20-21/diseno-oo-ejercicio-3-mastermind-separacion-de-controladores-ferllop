@@ -15,7 +15,7 @@ public class PlayView extends View {
 	public void interact() {	
 		do {	
 			this.printAttempts();
-			new CombinationView(this.game.getSecretCombination()).print();
+			new CombinationView().print(this.game.getSecretCombination(), '*');
 			this.printResults();
 			new AttemptView(game).interact();
 			this.printLine();

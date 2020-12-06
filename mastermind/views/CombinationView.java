@@ -4,18 +4,21 @@ import mastermind.models.Combination;
 import utils.ConsoleIO;
 
 public class CombinationView{
-	Combination combination;
-	
-	public CombinationView(Combination combination) {
-		this.combination = combination;
+		
+	public void print(Combination combination, char symbol) {
+		ConsoleIO.getInstance().print(renderHidden(combination, symbol));
 	}
 	
-	public void print(char symbol) {
-		ConsoleIO.getInstance().print(combination.toString(symbol));
-	}
-	
-	public void print() {		
+	public void print(Combination combination) {		
 		ConsoleIO.getInstance().print(combination.toString());
 	}
-
+	
+	private String renderHidden(Combination combination, char symbol) {
+		StringBuffer result = new StringBuffer();
+		
+		for (int i = 0; i < combination.toString().length(); i++) {
+			result.append(symbol);
+		}		
+		return result.toString();
+	}
 }
