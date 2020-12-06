@@ -3,7 +3,7 @@ package mastermind.models;
 public class ProposedCombination extends Combination{
 	
 	public ProposedCombination(char[] proposedCombination) {
-		this.combination = new Color[COMBINATION_LENGTH];
+		this.combination = new Color[proposedCombination.length];
 		for (int i = 0; i < proposedCombination.length; i++) {
 			this.combination[i] = Color.valueOf(proposedCombination[i]);
 		}
@@ -26,13 +26,9 @@ public class ProposedCombination extends Combination{
 	public int countWhites(SecretCombination secretCombination) {
 		int whites = 0;
 		for (int i = 0; i < this.combination.length; i++) {
-			for (int j = 0; j < COMBINATION_LENGTH; j++) {
-				if (this.combination[i] == secretCombination.combination[j]) {
-					whites++;
-					break;
-				}
+			if(secretCombination.contains(this.combination[i])) {
+				whites++;
 			}
-			
 		}
 		return whites - countBlacks(secretCombination);
 	}

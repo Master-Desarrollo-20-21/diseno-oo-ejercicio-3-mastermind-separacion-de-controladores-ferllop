@@ -2,10 +2,8 @@ package mastermind.models;
 
 public abstract class Combination {
 	
-	protected final int COMBINATION_LENGTH = 4;
 	protected Color[] combination;
-	
-	
+		
 	public String toString(char symbol) {
 		StringBuffer result = new StringBuffer();
 		
@@ -28,4 +26,13 @@ public abstract class Combination {
 		}		
 		return result.toString();
 	}	
+	
+	public boolean contains(Color color) {
+		for (int i = 0; i < this.combination.length; i++) {
+			if (this.combination[i] == color) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

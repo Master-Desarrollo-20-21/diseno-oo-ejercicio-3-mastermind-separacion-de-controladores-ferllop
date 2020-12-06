@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class SecretCombination extends Combination {
 
-	public SecretCombination() {
+	public SecretCombination(int combinationLength) {
 		do {
-			Color[] combination = new Color[this.COMBINATION_LENGTH];
+			Color[] combination = new Color[combinationLength];
 			for (int i = 0; i < combination.length; i++) {
 				int randomValue = new Random().nextInt(Color.values().length);
 				Color randomColor = Color.values()[randomValue];

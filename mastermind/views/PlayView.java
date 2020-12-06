@@ -43,7 +43,7 @@ public class PlayView extends View {
 	}	
 	
 	private void printAttempts() {
-		ConsoleIO.getInstance().printAttempts(this.game.getPlayer().proposedCombinationsQuantity()+1);
+		ConsoleIO.getInstance().printAttempts(this.game.getProposedCombinationsQuantity()+1);
 	}
 
 	private void printResults() {

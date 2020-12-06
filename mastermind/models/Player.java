@@ -14,9 +14,13 @@ public class Player {
 		proposedCombinations.add(proposedCombination);
 	}
 		
-	public int proposedCombinationsQuantity() {
+	public int getProposedCombinationsQuantity() {
 		return proposedCombinations.size();
 	}
+	
+	public ProposedCombination getLastProposedCombination() {
+		return proposedCombinations.get(proposedCombinations.size()-1);
+	}	
 
 	public ArrayList<ProposedCombination> getProposedCombinations() {
 		return proposedCombinations;
