@@ -2,8 +2,6 @@ package mastermind.models;
 
 import java.util.ArrayList;
 
-import utils.ConsoleIO;
-
 public class Player {
 
 	private ArrayList<ProposedCombination> proposedCombinations;

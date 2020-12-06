@@ -18,6 +18,15 @@ public class Game {
 		this.player = new Player();
 	}
 	
+	public boolean isFinished() {
+		return this.totalAttemptsSurpassed(allowedTotalAttempts) || 
+				this.playerWins();
+	}
+	
+	public boolean playerWins() {
+		return this.allBlacksInProposedCombination(this.getLastProposedCombination());
+	}
+	
 	private boolean totalAttemptsSurpassed(int allowedTotalAttempts) {
 		if (player.proposedCombinationsQuantity() >= allowedTotalAttempts) {
 			return true;
@@ -48,13 +57,6 @@ public class Game {
 		return player.getProposedCombinations();
 	}
 
-	public boolean isFinished() {
-		return this.totalAttemptsSurpassed(allowedTotalAttempts) || 
-				this.playerWins();
-	}
 	
-	public boolean playerWins() {
-		return this.allBlacksInProposedCombination(this.getLastProposedCombination());
-	}
 	
 }
