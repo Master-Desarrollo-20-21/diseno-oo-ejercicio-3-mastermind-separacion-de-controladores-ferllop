@@ -1,4 +1,4 @@
-package mastermind;
+package mastermind.models;
 
 import java.util.Random;
 
@@ -17,7 +17,7 @@ public class SecretCombination extends Combination {
 	}
 	
 	private boolean hasDuplicates() { //COPIA PEGA DEL ALGORITMO DE CONSOLE ARJJJJ!!
-		String string = this.getUnhiddenString();
+		String string = this.toString();
 		
 		for (int i = 0; i< string.length(); i++) {
 			for (int j = 0; j < string.length(); j++) {

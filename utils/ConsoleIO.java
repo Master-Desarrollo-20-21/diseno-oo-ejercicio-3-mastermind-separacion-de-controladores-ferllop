@@ -1,12 +1,22 @@
-package mastermind;
+package utils;
 
 import java.util.Scanner;
 
+import mastermind.models.ProposedCombination;
+
 public class ConsoleIO {
-	Scanner scanner;
-	
-	public ConsoleIO() {
+	private Scanner scanner;
+	private static ConsoleIO console;
+		
+	private ConsoleIO() {
 		this.scanner = new Scanner(System.in);
+	}
+
+	public static ConsoleIO getInstance() {
+		if(console == null) {
+			console = new ConsoleIO();
+		}
+		return console;
 	}
 
 	public String getLowercaseString(String title) {
@@ -23,7 +33,7 @@ public class ConsoleIO {
 	}
 
 	public void printProposalResult(ProposedCombination proposedCombination, int blacks, int whites) {
-		System.out.println(proposedCombination.getUnhiddenString() + " --> " + blacks + " blacks and " + whites + " whites");
+		System.out.println(proposedCombination.toString() + " --> " + blacks + " blacks and " + whites + " whites");
 	}
 
 	public String getValidValue(String title, char[] validValues, int valueLength) {
