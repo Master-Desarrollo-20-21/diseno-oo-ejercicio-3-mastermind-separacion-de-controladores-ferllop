@@ -12,28 +12,17 @@ public class PlayView extends View {
 	}
 
 	@Override
-	public void interact() {		
+	public void interact() {	
+		AttemptView attemptView = new AttemptView(game);
 		do {	
 			this.printAttempts();
 			this.printSecretCombinationUnhidden();
 			this.printResults();
-			ProposedCombination combination = this.proposeCombination(this.game.getSecretCombination().getSize());
-			this.game.saveProposedCombination(combination);
+			attemptView.interact();
 			this.printLine();
 		} while (!this.game.isFinished());			
 		this.printResultMessage();			
-	}
-	
-	private ProposedCombination proposeCombination(int validLength) {
-		char[] validColorInitials = new char[Color.values().length];
-		for (int i = 0; i < Color.values().length; i++) {
-			validColorInitials[i] = Color.values()[i].getLetter();
-		}
-		ProposedCombination proposedCombination = new ProposedCombination(
-				ConsoleIO.getInstance().getValidValue("Propose a combination", validColorInitials, validLength)
-		);
-		return proposedCombination;
-	}
+	}	
 	
 	private void printSecretCombinationHidden(char symbol) {
 		ConsoleIO.getInstance().print(this.game.getSecretCombination().toString(symbol));
