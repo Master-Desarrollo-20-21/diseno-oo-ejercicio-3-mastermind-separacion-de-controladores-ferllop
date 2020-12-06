@@ -13,23 +13,14 @@ public class PlayView extends View {
 
 	@Override
 	public void interact() {	
-		AttemptView attemptView = new AttemptView(game);
 		do {	
 			this.printAttempts();
-			this.printSecretCombinationUnhidden();
+			new CombinationView(this.game.getSecretCombination()).print();
 			this.printResults();
-			attemptView.interact();
+			new AttemptView(game).interact();
 			this.printLine();
 		} while (!this.game.isFinished());			
 		this.printResultMessage();			
-	}	
-	
-	private void printSecretCombinationHidden(char symbol) {
-		ConsoleIO.getInstance().print(this.game.getSecretCombination().toString(symbol));
-	}
-	
-	private void printSecretCombinationUnhidden() {		
-		ConsoleIO.getInstance().print(this.game.getSecretCombination().toString());
 	}	
 	
 	private void printAttempts() {
