@@ -18,7 +18,8 @@ public class PlayView extends View {
 			this.printSecretCombinationUnhidden();
 			this.printResults();
 			ProposedCombination combination = this.proposeCombination(this.game.getSecretCombination().getSize());
-			this.game.getPlayer().saveProposedCombination(combination);
+			this.game.saveProposedCombination(combination);
+			this.printLine();
 		} while (!this.game.isFinished());			
 		this.printResultMessage();			
 	}
@@ -43,7 +44,7 @@ public class PlayView extends View {
 	}	
 	
 	private void printAttempts() {
-		ConsoleIO.getInstance().printAttempts(this.game.getProposedCombinationsQuantity()+1);
+		ConsoleIO.getInstance().printAttempts(this.game.getProposedCombinationsCount());
 	}
 
 	private void printResults() {
@@ -61,6 +62,10 @@ public class PlayView extends View {
 		}		
 		message = "You've lost!!!";	
 		ConsoleIO.getInstance().print(message);
+	}
+	
+	private void printLine() {
+		ConsoleIO.getInstance().print("");
 	}
 
 }
