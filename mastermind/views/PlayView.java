@@ -15,7 +15,7 @@ public class PlayView extends View {
 	public void interact() {	
 		do {	
 			this.printAttempts();
-			new CombinationView().print(this.game.getSecretCombination(), '*');
+			new CombinationView().print(this.game.getSecretCombination());
 			this.printResults();
 			new AttemptView(game).interact();
 			this.printLine();
@@ -36,11 +36,10 @@ public class PlayView extends View {
 	}
 	
 	private void printResultMessage() {
-		String message;
+		String message = "You've lost!!!";
 		if (this.game.playerWins()) {
 			message = "You've won!!!";
-		}		
-		message = "You've lost!!!";	
+		}			
 		ConsoleIO.getInstance().print(message);
 	}
 	

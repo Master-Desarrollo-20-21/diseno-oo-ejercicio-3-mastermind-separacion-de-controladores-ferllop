@@ -1,6 +1,5 @@
 package mastermind.views;
 
-import mastermind.models.Color;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 import utils.ConsoleIO;
@@ -18,12 +17,9 @@ public class AttemptView extends View {
 	}
 	
 	private ProposedCombination proposeCombination(int validLength) {
-		char[] validColorInitials = new char[Color.values().length];
-		for (int i = 0; i < Color.values().length; i++) {
-			validColorInitials[i] = Color.values()[i].getLetter();
-		}
+		char[] validColorsLetters = this.game.getValidColorsLetters();
 		ProposedCombination proposedCombination = new ProposedCombination(
-				ConsoleIO.getInstance().getValidValue("Propose a combination", validColorInitials, validLength)
+				ConsoleIO.getInstance().getValidValue("Propose a combination", validColorsLetters, validLength)
 		);
 		return proposedCombination;
 	}
