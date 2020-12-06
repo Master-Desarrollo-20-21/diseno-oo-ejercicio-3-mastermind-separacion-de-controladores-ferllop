@@ -3,7 +3,7 @@ package mastermind.models;
 public abstract class Combination {
 	
 	protected final int COMBINATION_LENGTH = 4;
-	protected Position[] combination;
+	protected Color[] combination;
 	
 	
 	public String toString(char symbol) {
@@ -24,7 +24,7 @@ public abstract class Combination {
 		StringBuffer result = new StringBuffer();
 		
 		for (int i = 0; i < combination.length; i++) {
-			result.append(combination[i].getInitial());
+			result.append(combination[i].getLetter());
 		}		
 		return result.toString();
 	}	
