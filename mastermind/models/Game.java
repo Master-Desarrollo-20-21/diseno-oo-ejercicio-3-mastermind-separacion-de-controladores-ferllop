@@ -31,18 +31,14 @@ public class Game {
 	}
 	
 	private boolean playerLoses() {
-		return this.player.getAttemptsCount() >= ALLOWED_TOTAL_ATTEMPTS;
+		return this.getAttemptsCount() >= ALLOWED_TOTAL_ATTEMPTS;
 	}
 	
 	public int getAttemptsCount() {
-		return this.player.getAttemptsCount();
+		return this.player.getAttempts().size();
 	}	
 	
 	public ArrayList<Attempt> getAttempts(){
 		return this.player.getAttempts();
-	}
-	
-	public Result getResult(ProposedCombination proposedCombination) {
-		return new Result(proposedCombination, secretCombination);
 	}
 }
