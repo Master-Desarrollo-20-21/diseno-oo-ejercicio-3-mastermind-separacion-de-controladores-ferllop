@@ -4,25 +4,25 @@ import java.util.ArrayList;
 
 public class Player {
 
-	private ArrayList<ProposedCombination> attempts;
+	private ArrayList<Attempt> attempts;
 
 	public Player() {
-		attempts = new ArrayList<ProposedCombination>();
+		attempts = new ArrayList<Attempt>();
 	}
 	
-	public void saveAttempt(ProposedCombination proposedCombination) {
-		attempts.add(proposedCombination);
+	public void saveAttempt(Attempt attempt) {
+		attempts.add(attempt);
 	}
 	
-	public ProposedCombination getAttempt(int index) {
+	public Attempt getAttempt(int index) {
 		return attempts.get(index);
 	}	
 	
-	public ProposedCombination getLastAttempt() {
+	public Attempt getLastAttempt() {
 		return attempts.get(attempts.size()-1);
 	}	
 
-	public ArrayList<ProposedCombination> getAttempts() {
+	public ArrayList<Attempt> getAttempts() {
 		return attempts;
 	}
 

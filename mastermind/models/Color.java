@@ -1,6 +1,7 @@
 package mastermind.models;
 
 public enum Color {
+	
 	RED('r'),
 	BLUE('b'),
 	YELLOW('y'),

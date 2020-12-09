@@ -2,15 +2,15 @@ package mastermind.models;
 
 public class Result {
 	
-	private final ProposedCombination proposedCombination;
-	private final SecretCombination secretCombination;
-	
+	private int blacks;
+	private int whites;
+		
 	public Result(ProposedCombination proposedCombination, SecretCombination secretCombination) {
-		this.proposedCombination = proposedCombination;
-		this.secretCombination = secretCombination;
+		this.blacks = countBlacks(proposedCombination, secretCombination);
+		this.whites = countWhites(proposedCombination, secretCombination);				
 	}
 
-	public int getBlacks() {
+	private int countBlacks(ProposedCombination proposedCombination, SecretCombination secretCombination) {
 		int blacks = 0;
 		for (int i = 0; i < secretCombination.getSize(); i++) {
 			if (secretCombination.getColor(i) == proposedCombination.getColor(i)) {
@@ -20,17 +20,21 @@ public class Result {
 		return blacks;
 	}
 
-	public int getWhites() {
+	private int countWhites(ProposedCombination proposedCombination, SecretCombination secretCombination) {
 		int whites = 0;
 		for (int i = 0; i < secretCombination.getSize(); i++) {
 			if (proposedCombination.contains(secretCombination.getColor(i))) {
 				whites++;
 			}
 		}
-		return whites - this.getBlacks();
+		return whites - this.blacks;
 	}
-
-	public ProposedCombination getProposedCombination() {
-		return proposedCombination;
+	
+	public int getBlacks() {
+		return blacks;
+	}
+	
+	public int getWhites() {
+		return whites;
 	}
 }

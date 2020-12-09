@@ -21,10 +21,6 @@ public class ConsoleIO {
 		System.out.println(string);		
 	}
 	
-	public void print(char[] chars) {
-		this.print(String.valueOf(chars));		
-	}
-	
 	public void printEmptyLine() {
 		this.print("");
 	}

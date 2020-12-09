@@ -19,7 +19,7 @@ public class Game {
 	}
 	
 	public void saveAttempt(ProposedCombination proposedCombination) {
-		player.saveAttempt(proposedCombination);
+		player.saveAttempt(new Attempt(proposedCombination, secretCombination));
 	}	
 	
 	public boolean isFinished() {
@@ -27,23 +27,19 @@ public class Game {
 	}
 	
 	public boolean playerWins() {
-		return new Result(this.player.getLastAttempt(), secretCombination).getBlacks() == COMBINATION_LENGTH;
+		return this.player.getLastAttempt().getBlacks() == COMBINATION_LENGTH;
 	}
 	
 	private boolean playerLoses() {
-		return player.getAttemptsCount() >= ALLOWED_TOTAL_ATTEMPTS;
+		return this.player.getAttemptsCount() >= ALLOWED_TOTAL_ATTEMPTS;
 	}
 	
 	public int getAttemptsCount() {
-		return player.getAttemptsCount();
+		return this.player.getAttemptsCount();
 	}	
 	
-	public ArrayList<Result> getResults(){
-		ArrayList<Result> results = new ArrayList<>();
-		for(ProposedCombination proposedCombination : player.getAttempts()) {
-			results.add(this.getResult(proposedCombination));
-		}
-		return results;
+	public ArrayList<Attempt> getAttempts(){
+		return this.player.getAttempts();
 	}
 	
 	public Result getResult(ProposedCombination proposedCombination) {

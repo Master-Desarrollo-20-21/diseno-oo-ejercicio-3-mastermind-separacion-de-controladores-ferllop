@@ -5,8 +5,7 @@ import mastermind.models.CombinationChecker;
 import mastermind.models.ProposedCombination;
 import utils.ConsoleIO;
 
-public class ProposedCombinationView {
-	
+public class ProposedCombinationView {	
 	public String renderCombinationInitials(ProposedCombination proposedCombination) {
 		return Color.getInitials(proposedCombination.getColors());
 	}
@@ -36,6 +35,5 @@ public class ProposedCombinationView {
 			errorMessage += Message.NO_DUPLICATED_COLORS.getMessage();
 		}
 		return errorMessage.trim();
-	}		
-		
+	}			
 }
