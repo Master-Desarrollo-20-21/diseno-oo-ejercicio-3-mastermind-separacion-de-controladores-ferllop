@@ -9,7 +9,7 @@ public class SecretCombination extends Combination {
 		this.populateRandomly();
 	}	
 	
-	public void populateRandomly() {
+	private void populateRandomly() {
 		for (int i = 0; i < this.getSize(); i++) {
 			this.setColor(i, this.getRandomColorAvoiding(this.getColors()));
 		}

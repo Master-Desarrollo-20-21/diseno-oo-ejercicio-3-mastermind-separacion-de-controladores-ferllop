@@ -10,7 +10,7 @@ public class MastermindCombinationChecker extends CombinationChecker<String>{
 	
 	public boolean isValid() {
 		return this.hasValidLength() 
-				&& this.hasValidValues()
+				&& this.hasValidColors()
 				&& !this.hasDuplicates();
 	}
 	
@@ -18,7 +18,7 @@ public class MastermindCombinationChecker extends CombinationChecker<String>{
 		return this.hasValidLength(Game.COMBINATION_LENGTH);
 	}
 	
-	public boolean hasValidValues() {
+	public boolean hasValidColors() {
 		return this.hasValidValues(Color.getInitials().split(""));
 	}
 }

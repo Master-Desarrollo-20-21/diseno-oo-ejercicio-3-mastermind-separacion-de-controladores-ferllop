@@ -6,9 +6,7 @@ import mastermind.models.ProposedCombination;
 import utils.ConsoleIO;
 
 public class ProposedCombinationView {	
-	
-	private MastermindCombinationChecker combinationChecker;
-	
+		
 	public String renderCombinationInitials(ProposedCombination proposedCombination) {
 		return Color.getInitials(proposedCombination.getColors());
 	}
@@ -16,10 +14,11 @@ public class ProposedCombinationView {
 	public ProposedCombination read(String title) {
 		String proposedCombination = "";
 		String errorMessage = "";
+		MastermindCombinationChecker combinationChecker;
 		do {
 			proposedCombination = ConsoleIO.getInstance().getString(title);
-			combinationChecker = new MastermindCombinationChecker(proposedCombination);
-			errorMessage = this.renderErrorMessage(proposedCombination);
+			combinationChecker = ProposedCombination.getChecker(proposedCombination);
+			errorMessage = this.renderErrorMessage(combinationChecker);
 			if (!errorMessage.isEmpty()) {
 				ConsoleIO.getInstance().print(errorMessage);
 			}
@@ -27,13 +26,13 @@ public class ProposedCombinationView {
 		return new ProposedCombination(proposedCombination);
 	}
 	
-	public String renderErrorMessage(String combination) {
+	private String renderErrorMessage(MastermindCombinationChecker combinationChecker) {
+		assert(combinationChecker != null);
 		String errorMessage = "";
-		MastermindCombinationChecker combinationChecker = new MastermindCombinationChecker(combination);
 		if(!combinationChecker.hasValidLength()) {
 			errorMessage += Message.NO_VALID_LENGTH.getMessage() + "\n";
 		}		
-		if(!combinationChecker.hasValidValues()) {
+		if(!combinationChecker.hasValidColors()) {
 			errorMessage += Message.NO_VALID_VALUES.getMessage() + ": " + Color.getInitials() + "\n";
 		}		
 		if(combinationChecker.hasDuplicates()) {
