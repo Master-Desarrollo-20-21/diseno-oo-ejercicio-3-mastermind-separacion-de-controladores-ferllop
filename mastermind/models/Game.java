@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Game {
 	
+	public static final int COMBINATION_LENGTH = 4;	
+	private final int ALLOWED_TOTAL_ATTEMPTS = 10;
 	private Player player;	
 	private SecretCombination secretCombination;
-	private final int ALLOWED_TOTAL_ATTEMPTS = 10;
-	public static final int COMBINATION_LENGTH = 4;	
 
 	public void initialize() {
 		this.player = new Player();
