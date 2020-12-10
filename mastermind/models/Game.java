@@ -7,11 +7,7 @@ public class Game {
 	private Player player;	
 	private SecretCombination secretCombination;
 	private final int ALLOWED_TOTAL_ATTEMPTS = 10;
-	public static final int COMBINATION_LENGTH = 4;
-	
-	public Game() {
-		this.initialize();
-	}
+	public static final int COMBINATION_LENGTH = 4;	
 
 	public void initialize() {
 		this.player = new Player();
