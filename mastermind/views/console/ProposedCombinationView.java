@@ -40,6 +40,5 @@ public class ProposedCombinationView {
 		}
 		return errorMessage.trim();
 	}
-	
 				
 }
