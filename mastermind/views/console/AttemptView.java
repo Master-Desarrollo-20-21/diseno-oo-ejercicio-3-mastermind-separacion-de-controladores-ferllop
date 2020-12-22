@@ -1,8 +1,10 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import mastermind.models.Attempt;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
+import mastermind.views.Message;
+import mastermind.views.View;
 import utils.ConsoleIO;
 
 public class AttemptView extends View {

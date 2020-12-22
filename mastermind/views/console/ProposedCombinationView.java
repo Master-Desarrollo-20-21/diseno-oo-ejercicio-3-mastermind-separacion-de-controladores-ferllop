@@ -1,8 +1,9 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import mastermind.models.Color;
 import mastermind.models.MastermindCombinationChecker;
 import mastermind.models.ProposedCombination;
+import mastermind.views.Message;
 import utils.ConsoleIO;
 
 public class ProposedCombinationView {	

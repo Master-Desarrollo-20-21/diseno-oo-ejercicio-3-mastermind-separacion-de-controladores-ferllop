@@ -1,6 +1,8 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import mastermind.models.Game;
+import mastermind.views.Message;
+import mastermind.views.View;
 import utils.ConsoleIO;
 
 public class PlayView extends View {
