@@ -1,21 +1,23 @@
 package mastermind.views.console;
 
-import mastermind.models.Game;
+import mastermind.controllers.AttemptController;
+import mastermind.controllers.PlayController;
+import mastermind.controllers.StartController;
 import mastermind.views.GameView;
 import mastermind.views.Message;
 import utils.ConsoleIO;
 
 public class ConsoleGameView extends GameView {
 	
+	private StartController startController;
 	private PlayView playView;
 	private ResumeView resumeView;
 	
-	public ConsoleGameView(Game game) {
-		super(game);
-		this.playView = new PlayView(game);
+	public ConsoleGameView(StartController startController, PlayController playController, AttemptController attemptController) {
+		this.startController = startController;
+		this.playView = new PlayView(playController, attemptController);
 		this.resumeView = new ResumeView();
 	}
-
 	
 	@Override 
 	protected void play() {
@@ -24,7 +26,7 @@ public class ConsoleGameView extends GameView {
 	
 	@Override 
 	protected void start() {
-		this.game.initialize();
+		this.startController.start();
 	}
 	
 	@Override 

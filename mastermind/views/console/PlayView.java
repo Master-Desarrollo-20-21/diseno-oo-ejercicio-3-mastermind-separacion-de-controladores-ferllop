@@ -1,29 +1,30 @@
 package mastermind.views.console;
 
-import mastermind.models.Game;
+import mastermind.controllers.AttemptController;
+import mastermind.controllers.PlayController;
 import mastermind.views.Message;
-import mastermind.views.View;
 import utils.ConsoleIO;
 
-public class PlayView extends View {
+public class PlayView {
 	
 	private AttemptView attemptView;
+	private PlayController playController;
 	
-	public PlayView(Game game) {
-		super(game);		
-		attemptView = new AttemptView(game);
+	public PlayView(PlayController playController, AttemptController attemptController) {
+		this.playController = playController;
+		attemptView = new AttemptView(attemptController);
 	}
 
 	public void interact() {	
 		do {	
 			this.attemptView.interact();
 			ConsoleIO.getInstance().printEmptyLine();
-		} while (!this.game.isFinished());			
+		} while (!this.playController.isFinished());			
 		ConsoleIO.getInstance().print(this.renderResultMessage());
 	}	
 	
 	private String renderResultMessage() {
-		if (this.game.playerWins()) {
+		if (this.playController.playerWins()) {
 			return Message.YOU_WIN.getMessage();
 		}			
 		return Message.YOU_LOSE.getMessage();

@@ -1,12 +1,6 @@
 package mastermind.views;
 
-import mastermind.models.Game;
-
-public abstract class GameView extends View {
-	
-	public GameView(Game game) {
-		super(game);
-	}
+public abstract class GameView {
 
 	public void interact() {
 		do {	

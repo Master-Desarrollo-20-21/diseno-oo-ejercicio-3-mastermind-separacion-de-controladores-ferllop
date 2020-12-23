@@ -1,13 +1,15 @@
 package mastermind;
 
-import mastermind.models.Game;
+import mastermind.controllers.AttemptController;
+import mastermind.controllers.PlayController;
+import mastermind.controllers.StartController;
 import mastermind.views.graphics.GraphicsGameView;
 
 class GraphicsMastermind extends Mastermind{
 	
 	@Override
-	protected GraphicsGameView createView(Game game) {
-		return new GraphicsGameView(game);
+	protected GraphicsGameView createView(StartController startController, PlayController playController, AttemptController attemptController) {
+		return new GraphicsGameView();
 	}
 
 	public static void main(String[] args) {
