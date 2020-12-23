@@ -6,11 +6,11 @@ public enum Message {
 	YOU_LOSE("You've lost!!!"),
 	PLAY_AGAIN("¿Quieres volver a jugar? (s/n)"),
 	END("BYE BYE"),
-	ATTEMPTS_COUNT("%1$1s attempt(s):"),
-	RESULT("%1$1s --> %2$1s blacks and %3$1s whites"),
-	NO_DUPLICATED_COLORS("Can't be duplicated colors"),
-	NO_VALID_VALUES("Wrong colors, they must be"),
-	NO_VALID_LENGTH("Wrong proposed combination length");	
+	ATTEMPTS_COUNT("%s attempt(s):"),
+	RESULT("%s --> %s blacks and %s whites"),
+	ERROR_DUPLICATED_VALUES("Can't be duplicated colors"),
+	ERROR_NOT_VALID_VALUES("Wrong colors, they must be: %s"),
+	ERROR_NOT_VALID_LENGTH("Wrong proposed combination length");
 	
 	private String message;
 	

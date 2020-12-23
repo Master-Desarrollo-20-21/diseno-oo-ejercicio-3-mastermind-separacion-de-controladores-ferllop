@@ -1,9 +1,11 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import mastermind.types.Error;
 
-public class CombinationChecker<T> {
+public abstract class CombinationChecker<T> {
 	
 	private T[] combination;
 	
@@ -11,21 +13,38 @@ public class CombinationChecker<T> {
 		this.combination = combination;
 	}
 	
-	public boolean hasValidLength(int validLength) {
-		return combination.length == validLength;
+	public Error checkValidLength(int validLength) {
+		if (combination.length != validLength) {
+			return Error.NOT_VALID_LENGTH;
+		}
+		return Error.NULL;
 	}
 
-	public boolean hasValidValues(T[] validValues) {
+	public Error checkValidValues(T[] validValues) {
 		for (T value : combination) {
 			if (!Arrays.asList(validValues).contains(value)) {
-				return false;
+				return Error.NOT_VALID_VALUES;
 			}
 		}
-		return true;
+		return Error.NULL;
 	}
 
-	public boolean hasDuplicates() {
+	public Error checkDuplicates() {
 		HashSet<T> list = new HashSet<T>(Arrays.asList(combination));
-		return list.size() < combination.length;
+		if (list.size() != combination.length) {
+			return Error.DUPLICATED_VALUES;
+		}
+		return Error.NULL;
 	}
+	
+	public boolean isValid() {
+		for(Error error : this.getErrors()) {
+			if (!error.isNull()) {
+				return false;
+			}
+		}		
+		return true;
+	}
+	
+	public abstract ArrayList<Error> getErrors();
 }
