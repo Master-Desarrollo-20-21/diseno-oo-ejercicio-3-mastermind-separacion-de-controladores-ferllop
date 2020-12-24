@@ -1,9 +1,12 @@
 package mastermind.views;
 
 import mastermind.controllers.Controller;
+import mastermind.controllers.ControllerVisitor;
 
-public abstract class GameView {
+public abstract class GameView implements ControllerVisitor{
 
-	public abstract void interact(Controller controller);
+	public void interact(Controller controller) {
+		controller.accept(this);
+	}
 	
 }

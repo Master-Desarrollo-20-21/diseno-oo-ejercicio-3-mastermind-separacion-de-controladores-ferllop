@@ -38,6 +38,11 @@ public class PlayController extends Controller {
 	
 	public ArrayList<Attempt> getAttempts(){
 		return this.attemptController.getAttempts();		
+	}
+
+	@Override
+	public void accept(ControllerVisitor controllerVisitor) {
+		controllerVisitor.visit(this);
 	}	
 	
 }

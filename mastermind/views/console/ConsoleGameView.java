@@ -1,6 +1,5 @@
 package mastermind.views.console;
 
-import mastermind.controllers.Controller;
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ResumeController;
 import mastermind.controllers.StartController;
@@ -16,13 +15,18 @@ public class ConsoleGameView extends GameView {
 	}
 	
 	@Override
-	public void interact(Controller controller) {
-		if (controller instanceof StartController) {
-			((StartController) controller).start();
-		} else if (controller instanceof PlayController) {
-			this.playView.interact((PlayController) controller);			
-		} else if (controller instanceof ResumeController) {
-			this.resumeView.interact((ResumeController) controller);
-		}
+	public void visit(StartController startController) {
+		startController.start();
+	}
+
+	@Override
+	public void visit(PlayController playController) {
+		this.playView.interact(playController);	
+	}
+
+	@Override
+	public void visit(ResumeController resumeController) {
+		this.resumeView.interact(resumeController);
+		
 	}
 }
