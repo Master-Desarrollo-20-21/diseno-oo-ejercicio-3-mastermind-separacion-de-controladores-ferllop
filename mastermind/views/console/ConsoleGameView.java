@@ -1,21 +1,18 @@
 package mastermind.views.console;
 
-import mastermind.controllers.AttemptController;
-import mastermind.controllers.PlayController;
-import mastermind.controllers.StartController;
+import mastermind.controllers.Logic;
 import mastermind.views.GameView;
 import mastermind.views.Message;
 import utils.ConsoleIO;
 
 public class ConsoleGameView extends GameView {
-	
-	private StartController startController;
+	private Logic logic;
 	private PlayView playView;
 	private ResumeView resumeView;
 	
-	public ConsoleGameView(StartController startController, PlayController playController, AttemptController attemptController) {
-		this.startController = startController;
-		this.playView = new PlayView(playController, attemptController);
+	public ConsoleGameView(Logic logic) {
+		this.logic = logic;
+		this.playView = new PlayView(logic);
 		this.resumeView = new ResumeView();
 	}
 	
@@ -26,7 +23,7 @@ public class ConsoleGameView extends GameView {
 	
 	@Override 
 	protected void start() {
-		this.startController.start();
+		this.logic.start();
 	}
 	
 	@Override 
