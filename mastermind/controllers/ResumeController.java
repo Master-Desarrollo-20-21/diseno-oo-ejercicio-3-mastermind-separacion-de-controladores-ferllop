@@ -3,15 +3,14 @@ package mastermind.controllers;
 import mastermind.models.Game;
 import mastermind.models.State;
 
-public class StartController extends Controller {
+public class ResumeController extends Controller {
 
-	public StartController(Game game, State state) {
+	public ResumeController(Game game, State state) {
 		super(game, state);
 	}
-	
-	public void start() {
+
+	public void reset() {
 		this.game.initialize();
-		this.state.next();
+		this.state.reset();		
 	}
-	
 }

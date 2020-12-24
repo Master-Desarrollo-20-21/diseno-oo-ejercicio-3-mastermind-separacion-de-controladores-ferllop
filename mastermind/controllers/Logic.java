@@ -1,46 +1,27 @@
 package mastermind.controllers;
 
-import java.util.ArrayList;
-
-import mastermind.models.Attempt;
+import java.util.HashMap;
 import mastermind.models.Game;
-import mastermind.models.ProposedCombination;
+import mastermind.models.State;
+import mastermind.models.StateValues;
 
 public class Logic {
 	Game game;
-	StartController startController;
-	PlayController playController;
-	AttemptController attemptController;
+	State state;
+	private HashMap<StateValues, Controller> controllers;
 	
 	public Logic() {
 		game = new Game();
-		startController = new StartController(game);
-		playController = new PlayController(game);
-		attemptController = new AttemptController(game);
+		state = new State();
+		controllers = new HashMap<>();
+		controllers.put(StateValues.INITIAL, new StartController(game, state));
+		controllers.put(StateValues.IN_GAME, new PlayController(game, state));
+		controllers.put(StateValues.RESUME, new ResumeController(game, state));
+		controllers.put(StateValues.EXIT, null);
 	}
 
-	public void start() {
-		this.startController.start();	
-	}
-
-	public boolean isFinished() {
-		return this.playController.isFinished();
-	}
-
-	public boolean playerWins() {
-		return this.playController.playerWins();
-	}
-
-	public void saveAttempt(ProposedCombination proposedCombination) {
-		this.attemptController.saveAttempt(proposedCombination);
-	}
-
-	public ArrayList<Attempt> getAttempts() {
-		return this.attemptController.getAttempts();
-	}
-
-	public int getAttemptsCount() {
-		return this.attemptController.getAttemptsCount();
+	public Controller getController() {
+		return this.controllers.get(this.state.getStateValue());
 	}
 
 }

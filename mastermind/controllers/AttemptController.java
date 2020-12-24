@@ -6,10 +6,12 @@ import mastermind.models.Attempt;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
-public class AttemptController extends Controller {
+public class AttemptController {
+	
+	Game game;
 
 	public AttemptController(Game game) {
-		super(game);
+		this.game = game;
 	}
 	
 	public void saveAttempt(ProposedCombination proposedCombination) {

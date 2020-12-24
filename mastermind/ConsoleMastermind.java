@@ -1,13 +1,12 @@
 package mastermind;
 
-import mastermind.controllers.Logic;
 import mastermind.views.console.ConsoleGameView;
 
 class ConsoleMastermind extends Mastermind {
 	
 	@Override
-	protected ConsoleGameView createView(Logic logic) {
-		return new ConsoleGameView(logic);
+	protected ConsoleGameView createView() {
+		return new ConsoleGameView();
 	}
 
 	public static void main(String[] args) {
