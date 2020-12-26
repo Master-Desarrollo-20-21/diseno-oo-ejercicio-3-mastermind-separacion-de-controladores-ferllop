@@ -2,23 +2,27 @@ package mastermind.models;
 
 import utils.CombinationChecker;
 
-public class MastermindCombinationChecker extends CombinationChecker<String>{
+import java.util.ArrayList;
 
+import mastermind.types.Error;
+
+public class MastermindCombinationChecker extends CombinationChecker<String>{
+	
 	public MastermindCombinationChecker(String combination) {
 		super(combination.split(""));
 	}
 	
-	public boolean isValid() {
-		return this.hasValidLength() 
-				&& this.hasValidColors()
-				&& !this.hasDuplicates();
+	private Error checkValidColors() {
+		return this.checkValidValues(Color.getInitials().split(""));
+	}
+
+	@Override
+	public ArrayList<Error> getErrors() {
+		ArrayList<Error> errors = new ArrayList<>();
+		errors.add(this.checkValidLength(Game.COMBINATION_LENGTH));
+		errors.add(this.checkValidColors()); 
+		errors.add(this.checkDuplicates());
+		return errors;
 	}
 	
-	public boolean hasValidLength() {
-		return this.hasValidLength(Game.COMBINATION_LENGTH);
-	}
-	
-	public boolean hasValidColors() {
-		return this.hasValidValues(Color.getInitials().split(""));
-	}
 }

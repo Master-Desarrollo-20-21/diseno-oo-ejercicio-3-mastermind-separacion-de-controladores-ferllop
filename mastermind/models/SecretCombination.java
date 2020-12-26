@@ -7,6 +7,7 @@ public class SecretCombination extends Combination {
 	public SecretCombination(int combinationLength) {
 		super(combinationLength);
 		this.populateRandomly();
+		System.out.println("CHEAT: " + Color.getInitials(combination));
 	}	
 	
 	private void populateRandomly() {

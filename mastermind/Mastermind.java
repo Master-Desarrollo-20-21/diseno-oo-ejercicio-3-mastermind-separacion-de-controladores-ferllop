@@ -1,23 +1,28 @@
 package mastermind;
 
-import mastermind.models.Game;
+import mastermind.controllers.Controller;
+import mastermind.controllers.Logic;
 import mastermind.views.GameView;
 
-class Mastermind {
-	
-	Game game;
-	GameView gameView;
-	
-	public Mastermind() {
-		game = new Game();
-		gameView = new GameView(game);
-	}
-	
-	public void play() {		
-		this.gameView.interact();
-	}	
+public abstract class Mastermind {
 
-	public static void main(String[] args) {
-		new Mastermind().play();
+	Logic logic;
+	GameView gameView;
+
+	public Mastermind() {
+		logic = new Logic();
+		gameView = this.createView();
+	}
+
+	protected abstract GameView createView();
+
+	public void play() {
+		Controller controller;
+		do {
+			controller = this.logic.getController();
+			if (controller != null) {
+				this.gameView.interact(controller);				
+			}
+		} while (controller != null);
 	}
 }
